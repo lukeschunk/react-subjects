@@ -16,39 +16,62 @@ class Modal extends React.Component {
     isOpen: PropTypes.bool
   }
 
+  componentDidMount () {
+    if (this.props.isOpen) {
+      this.openModal()
+    } else {
+      this.closeModal()
+    }
+  }
+
+  componentDidUpdate () {
+    if (this.props.isOpen) {
+      this.openModal()
+    } else {
+      this.closeModal()
+    }
+  }
+
+  openModal = () => {
+    // console.log("t$$his is this.refs.modal", $(findDOMNode(this.refs.modal)))
+    // console.log("this is this.refs.modal", this.refs.modal)
+    $(this.refs.modal).modal('show')
+  }
+
+  closeModal = () => {
+    $(this.refs.modal).modal('hide')
+  }
+
+
   render() {
-    console.log("this is this.props.isOpen", this.props.isOpen)
     return (
-      <div>
-        {this.props.isOpen ? (
-          <div className="modal fade">
-            <div className="modal-dialog">
-              <div className="modal-content">
-                <div className="modal-header">
-                  <h4 className="modal-title">{this.props.title}</h4>
-                </div>
-                <div className="modal-body">
-                  {this.props.children}
-                </div>
-              </div>
+      <div className="modal fade" ref="modal">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h4 className="modal-title">{this.props.title}</h4>
+            </div>
+            <div className="modal-body">
+              {this.props.children}
             </div>
           </div>
-        ) : null}
+        </div>
       </div>
     )
   }
 }
 
 class App extends React.Component {
+
   state = {
     isOpen: false
   }
 
   toggleModal = () => {
-    console.log("toggle modal running", this.state.isOpen)
     this.setState({
       isOpen: !this.state.isOpen
     });
+
   }
 
   render() {
@@ -63,7 +86,7 @@ class App extends React.Component {
 
         <Modal
           isOpen={this.state.isOpen}
-          ref="modal"
+
           title="Declarative is better"
         >
           <p>Calling methods on instances is a FLOW not a STOCK!</p>

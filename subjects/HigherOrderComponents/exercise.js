@@ -35,4 +35,3 @@ class App extends React.Component {
 const AppWithMouse = withMousePosition(App)
 
 render(<AppWithMouse/>, document.getElementById('app'))
-

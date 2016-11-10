@@ -32,25 +32,57 @@
 import React, { PropTypes } from 'react'
 import { render } from 'react-dom'
 
+
+//const TabList = React.createClass({
+//  render() {
+//    const children = React.Children.map(this.props.children, (child, index) => {
+//      return React.cloneElement(child, {
+//        isActive: index === this.props.activeIndex,
+//        onClick: () => this.props.onActivate(index)
+//      })
+//    })
+//
+//    return <div style={styles.tabs}>{children}</div>
+//  }
+//})
+//
+
 class RadioGroup extends React.Component {
+  state = {
+    selectedRadioIndex: null
+  }
+
   static propTypes = {
     defaultValue: PropTypes.string
   }
 
   render() {
-    return <div>{this.props.children}</div>
+    const children = React.Children.map(this.props.children, (child) => {
+      return React.cloneElement(child, {
+        isSelected: this.state.currentValue === child.props.value,
+        onRadioButtonClick: () => {
+          this.setState({ currentValue: child.props.value })
+        }
+      })
+    })
+    return <div>{children}</div>
   }
 }
 
 class RadioOption extends React.Component {
   static propTypes = {
-    value: PropTypes.string
+    value: PropTypes.string,
+    isSelected: PropTypes.bool,
+    onRadioButtonClick: React.PropTypes.func
   }
 
   render() {
     return (
-      <div>
-        <RadioIcon isSelected={false}/> {this.props.children}
+      <div onClick={this.props.onRadioButtonClick}>
+        <RadioIcon
+          isSelected={this.props.isSelected}
+        />
+        {this.props.children}
       </div>
     )
   }
@@ -83,7 +115,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <h1>♬ It's about time that we all turned off the radio ♫</h1>
+        <h1>♬ Its about time that we all turned off the radio ♫</h1>
 
         <RadioGroup defaultValue="fm">
           <RadioOption value="am">AM</RadioOption>
