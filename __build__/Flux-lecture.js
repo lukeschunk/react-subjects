@@ -1,0 +1,8 @@
+webpackJsonp([18],[
+/* 0 */
+/***/ function(module, exports) {
+
+	eval("/*\n- Flux is an architecture, not a framework\n  - DO NOT START BUILDING STUFF WITH FLUX WHEN YOU'RE FIRST GETTING STARTED WITH REACT\n  - It can be difficult to understand why the patterns in Flux are useful if you haven't\n    already tried to solve problems w/out Flux\n  - You'll most likely hate Flux unless you're already fighting with your current JS\n    framework. If you're not, stick with what's working for you\n\n- Flux is good at:\n  - Making it easy to reason about changes to state\n\n- Remember our 2 questions:\n  - What state is there?\n  - When does it change?\n\nOpen Flux.png\n\n- Views\n  - React components (see components)\n  - Create actions (see actions/ViewActionCreators.js)\n\n- Action Creators\n  - Create \"actions\" with meaningful names (e.g. \"load contacts\", \"delete contact\").\n    These are the verbs. Ask yourself, \"what actions can the user take?\"\n  - Send actions through the dispatcher\n  - Possibly trigger API requests (side effect)\n\n- Dispatcher\n  - The only actual code Facebook's flux repo gives you!\n  - Synchronous dispatch of actions to ALL registered listeners (stores)\n  - Ensures only one action happens at a time\n\n- Stores\n  - Store the state of your app\n  - Listen for actions from the dispatcher, so they know when to update state\n  - Notify listeners when the state changes\n*/\n\"use strict\";\n\n//////////////////\n// WEBPACK FOOTER\n// ./subjects/Flux/lecture.js\n// module id = 0\n// module chunks = 18\n//# sourceURL=webpack:///./subjects/Flux/lecture.js?");
+
+/***/ }
+]);

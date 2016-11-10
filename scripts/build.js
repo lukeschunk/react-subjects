@@ -46,7 +46,7 @@ const Subjects = {
   Cursors: 'Cursors',
   MigratingToReact: 'Migrating to React',
   Redux: 'Redux',
-  ReduxDataFlow: 'Redux Data Flow',
+  // ReduxDataFlow: 'Redux Data Flow',
   MiniRedux: 'Implementing Redux'
 }
 
@@ -73,7 +73,7 @@ const markup = ReactDOMServer.renderToStaticMarkup(
               )
             )
           })
-        ) 
+        )
       )
     )
   )
